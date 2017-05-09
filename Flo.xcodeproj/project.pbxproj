@@ -16,6 +16,7 @@
 		5E22B14D1EBD292F0065D908 /* FloUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B14C1EBD292F0065D908 /* FloUITests.swift */; };
 		5E22B15B1EBD29A70065D908 /* PushButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B15A1EBD29A70065D908 /* PushButtonView.swift */; };
 		5EB10B5F1EC118F200FF678C /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10B5E1EC118F200FF678C /* CounterView.swift */; };
+		5EB10B611EC2615100FF678C /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB10B601EC2615100FF678C /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		5E22B14E1EBD292F0065D908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E22B15A1EBD29A70065D908 /* PushButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushButtonView.swift; sourceTree = "<group>"; };
 		5EB10B5E1EC118F200FF678C /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		5EB10B601EC2615100FF678C /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				5E22B12E1EBD292E0065D908 /* ViewController.swift */,
 				5E22B15A1EBD29A70065D908 /* PushButtonView.swift */,
 				5EB10B5E1EC118F200FF678C /* CounterView.swift */,
+				5EB10B601EC2615100FF678C /* GraphView.swift */,
 				5E22B1301EBD292E0065D908 /* Main.storyboard */,
 				5E22B1331EBD292E0065D908 /* Assets.xcassets */,
 				5E22B1351EBD292F0065D908 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB10B611EC2615100FF678C /* GraphView.swift in Sources */,
 				5E22B12F1EBD292E0065D908 /* ViewController.swift in Sources */,
 				5E22B15B1EBD29A70065D908 /* PushButtonView.swift in Sources */,
 				5E22B12D1EBD292E0065D908 /* AppDelegate.swift in Sources */,
