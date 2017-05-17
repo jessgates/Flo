@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var graphView: GraphView!
+    @IBOutlet weak var averageWaterDrunk: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
     
     var isGraphViewShowing = false
 
@@ -47,8 +49,48 @@ class ViewController: UIViewController {
             UIView.transition(from: graphView, to: counterView, duration: 1.0, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
         } else {
             UIView.transition(from: counterView, to: graphView, duration: 1.0, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            setupGraphDisplay()
         }
         isGraphViewShowing = !isGraphViewShowing
+    }
+    
+    func setupGraphDisplay() {
+        
+        let noOfDays:Int = 7
+        
+        graphView.graphPoints[graphView.graphPoints.count-1] = counterView.counter
+
+        graphView.setNeedsDisplay()
+        
+        let max = graphView.graphPoints.max()!
+        
+        maxLabel.text = "\(max)"
+        
+        //3 - calculate average from graphPoints
+        let average = graphView.graphPoints.reduce(0, +) / graphView.graphPoints.count
+        averageWaterDrunk.text = "\(average)"
+
+        let dateFormatter = DateFormatter()
+        let calendar = NSCalendar.current
+        let componentOptions:NSCalendar.Unit = .weekday
+        let components = (calendar as NSCalendar).components(componentOptions, from: Date())
+        var weekday = components.weekday
+        
+        let days = ["S", "S", "M", "T", "W", "T", "F"]
+        
+        //5 - set up the day name labels with correct day
+        for i in (1...days.count).reversed() {
+            if let labelView = graphView.viewWithTag(i) as? UILabel {
+                if weekday == 7 {
+                    weekday = 0
+                }
+                labelView.text = days[weekday!]
+                weekday = weekday! - 1
+                if weekday! < 0 {
+                    weekday = days.count - 1
+                }
+            }
+        }
     }
 }
 
