@@ -36,7 +36,7 @@ import UIKit
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: [])
         
         let margin: CGFloat = 20.0
-        var columnXpoint = { (column:Int) -> CGFloat in
+        var columnXPoint = { (column:Int) -> CGFloat in
             let spacer = (width - margin * 2 - 4) / CGFloat((self.graphPoints.count - 1))
             var x:CGFloat = CGFloat(column) * spacer
             x += margin + 2
@@ -60,23 +60,23 @@ import UIKit
 
         var graphPath = UIBezierPath()
 
-        graphPath.move(to: CGPoint(x:columnXpoint(0),
+        graphPath.move(to: CGPoint(x:columnXPoint(0),
                                       y:columnYPoint(graphPoints[0])))
         
         //add points for each item in the graphPoints array
         //at the correct (x, y) for the point
         for i in 1..<graphPoints.count {
-            let nextPoint = CGPoint(x:columnXpoint(i),
+            let nextPoint = CGPoint(x:columnXPoint(i),
                                     y:columnYPoint(graphPoints[i]))
             graphPath.addLine(to: nextPoint)
         }
         
-        //CGontextSaveGState(context)
+        context!.saveGState()
         
         var clippingPath = graphPath.copy() as! UIBezierPath
         
-        clippingPath.addLine(to: CGPoint(x: columnXpoint(graphPoints.count - 1), y: height))
-        clippingPath.addLine(to: CGPoint(x: columnXpoint(0), y: height))
+        clippingPath.addLine(to: CGPoint(x: columnXPoint(graphPoints.count - 1), y: height))
+        clippingPath.addLine(to: CGPoint(x: columnXPoint(0), y: height))
         clippingPath.close()
         
         clippingPath.addClip()
@@ -86,9 +86,19 @@ import UIKit
         endPoint = CGPoint(x: margin, y: self.bounds.height)
         
         context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
-        //CGContextRestoreGState(context)
+        
+        context!.restoreGState()
         
         graphPath.lineWidth = 2.0
         graphPath.stroke()
+        
+        for i in 0..<graphPoints.count {
+            var point = CGPoint(x: columnXPoint(i), y: columnYPoint(graphPoints[i]))
+            point.x -= 5.0/2
+            point.y -= 5.0/2
+            
+            let circle = UIBezierPath(ovalIn: CGRect(origin: point, size: CGSize(width: 5.0, height: 5.0)))
+            circle.fill()
+        }
     }
 }
