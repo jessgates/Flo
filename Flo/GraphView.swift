@@ -71,6 +71,24 @@ import UIKit
             graphPath.addLine(to: nextPoint)
         }
         
+        //CGontextSaveGState(context)
+        
+        var clippingPath = graphPath.copy() as! UIBezierPath
+        
+        clippingPath.addLine(to: CGPoint(x: columnXpoint(graphPoints.count - 1), y: height))
+        clippingPath.addLine(to: CGPoint(x: columnXpoint(0), y: height))
+        clippingPath.close()
+        
+        clippingPath.addClip()
+        
+        let highestPoint = columnYPoint(maxValue!)
+        startPoint = CGPoint(x: margin, y: highestPoint)
+        endPoint = CGPoint(x: margin, y: self.bounds.height)
+        
+        context!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
+        //CGContextRestoreGState(context)
+        
+        graphPath.lineWidth = 2.0
         graphPath.stroke()
     }
 }
