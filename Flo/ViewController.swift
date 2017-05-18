@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         
         let noOfDays:Int = 7
         
-        graphView.graphPoints[graphView.graphPoints.count-1] = counterView.counter
+        graphView.graphPoints[graphView.graphPoints.count - 1] = counterView.counter
 
         graphView.setNeedsDisplay()
         
@@ -66,7 +66,6 @@ class ViewController: UIViewController {
         
         maxLabel.text = "\(max)"
         
-        //3 - calculate average from graphPoints
         let average = graphView.graphPoints.reduce(0, +) / graphView.graphPoints.count
         averageWaterDrunk.text = "\(average)"
 
