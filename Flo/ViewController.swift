@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var graphView: GraphView!
     @IBOutlet weak var averageWaterDrunk: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
+    @IBOutlet weak var medalView: MedalView!
     
     var isGraphViewShowing = false
 
@@ -23,11 +24,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         counterLabel.text = String(counterView.counter)
+        checkTotal()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func checkTotal() {
+        if counterView.counter >= 8 {
+            medalView.showMedal(show: true)
+        } else {
+            medalView.showMedal(show: false)
+        }
     }
     
     @IBAction func btnPushButton(button: PushButtonView) {
@@ -42,6 +52,8 @@ class ViewController: UIViewController {
         if isGraphViewShowing {
             counterViewTap(gesture: nil)
         }
+        
+        checkTotal()
     }
     
     @IBAction func counterViewTap(gesture: UITapGestureRecognizer?) {

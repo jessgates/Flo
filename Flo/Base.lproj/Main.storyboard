@@ -69,6 +69,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-rz-vnf" customClass="MedalView" customModule="Flo" customModuleProvider="target">
+                                                <rect key="frame" x="76" y="147" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -222,6 +226,7 @@
                         <outlet property="counterView" destination="TIP-8J-FM7" id="Y9A-kD-zCt"/>
                         <outlet property="graphView" destination="5mb-mW-S4C" id="osg-8g-B87"/>
                         <outlet property="maxLabel" destination="2Rk-uD-9Bb" id="JeP-dL-SaW"/>
+                        <outlet property="medalView" destination="NgP-rz-vnf" id="qbA-v3-GBF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
